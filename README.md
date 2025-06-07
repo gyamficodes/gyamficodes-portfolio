@@ -1,75 +1,51 @@
-# Nuxt Minimal Starter
+# Gyamfi's Developer Portfolio
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Welcome to my personal portfolio website — a sleek, fast, and responsive site built with **Nuxt 3**, **Nuxt UI**, and **Tailwind CSS**.
 
-## Setup
+## 🔗 Live Preview
 
-Make sure to install dependencies:
+**🌐 [gyamficodes.tech](https://gyamficodes.tech)**
+
+---
+
+## 🛠 Tech Stack
+
+- **Nuxt 3** — Modern Vue framework
+- **Nuxt UI** — Beautiful and ready-to-use UI components
+- **Tailwind CSS** — Utility-first CSS framework
+- **VueUse + Motion** — Smooth scroll-based and hover animations
+- **Iconify** — Icon system with Lucide icons
+
+---
+
+## ✨ Features
+
+- Animated buttons and section transitions
+- Responsive layout for all screen sizes
+- Dark mode (if applicable)
+- Projects, About, Skills, Experience, and Contact sections
+- Social icons with external links
+
+---
+
+## 📸 Screenshots
+
+_Add screenshots or a short video demo here (optional but recommended)_
+
+---
+
+## 🚀 Setup & Development
 
 ```bash
-# npm
+# clone the repo
+git clone https://github.com/gyamficodes/portfolio.git
+
+# go into the directory
+cd portfolio
+
+# install dependencies
 npm install
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
+# run locally
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
