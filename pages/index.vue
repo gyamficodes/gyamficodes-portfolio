@@ -3,9 +3,7 @@
 <!-- eslint-disable vue/attributes-order -->
 <!-- eslint-disable vue/no-multiple-template-root -->
 <template>
-  <section
-    class="bg-[url('/assets/images/photo_2020-07-24_20-37-32.jpg')] relative bg-center bg-cover bg-no-repeat h-auto lg:h-screen"
-  >
+  <section id="home"   class="bg-[url('/assets/images/photo_2020-07-24_20-37-32.jpg')] relative bg-center bg-cover bg-no-repeat h-auto lg:h-screen">
     <!-- Animated Navbar -->
     <nav
       v-motion="{
@@ -69,10 +67,14 @@
               }"
               class="capitalize text-white text-[15px] font-[600] hover:text-[#0ebeff] transition-all duration-300 ease"
               :class="link.active ? 'text-[#0ebeff]' : ''"
+                @click="handleScrollToView(link.selector)"
             >
               {{ link.text }}
             </NuxtLink>
           </div>
+
+
+
 
           <!-- Animated Icons -->
           <div class="flex items-center gap-3">
@@ -299,6 +301,7 @@
 
   <!-- About Section -->
   <section
+  id="about" 
     style="
       background: linear-gradient(
         90deg,
@@ -589,6 +592,7 @@
     </div>
   </section>
 
+  <!-- Experience Section -->
   <section id="experience" class="relative h-auto py-[80px] bg-[#03032b] overflow-hidden">
    
     <!-- Animated background elements -->
@@ -797,6 +801,7 @@
     </div>
   </section>
 
+  <!-- Projects Section -->
    <section id="projects" class="relative py-20 bg-gradient-to-b from-[#03032b] to-[#0a0a1a]">
     <div class="w-[97%] lg:w-[95%]  xl:w-[90%] 2xl:w-[75%] mx-auto h-full px-3 lg:px-0">
    <!-- Animated background elements -->
@@ -970,6 +975,7 @@
   <!-- fuvfact component  -->
 
 
+  <!-- Contact Section -->
   <section id="contact" class="relative py-20 bg-gradient-to-b from-[#03032b] to-[#0a0a1a] overflow-hidden">
     <!-- Animated background elements -->
     <div class="absolute inset-0 overflow-hidden opacity-20">
@@ -1208,6 +1214,7 @@ interface Link {
   to: string;
   text: string;
   active: boolean;
+  selector?: string;
 }
 
 interface Icon {
@@ -1225,12 +1232,12 @@ const handdleSideBar = () => {
 };
 
 const links = ref<Link[]>([
-  { to: "/", text: "Home", active: true },
-  { to: "/about", text: "About", active: false },
+  { to: "/", text: "Home", active: true , selector: '#home'},
+  { to: "/", text: "About", active: false,  selector: '#about' },
   // { to: "/skills", text: "Skills", active: false },
-  { to: "/experience", text: "Experience", active: false },
-  { to: "/projects", text: "Projects", active: false },
-  { to: "/contact", text: "Contact", active: false },
+  { to: "/", text: "Experience", active: false ,  selector: '#experience' },
+  { to: "/", text: "Projects", active: false , selector: '#projects' },
+  { to: "/", text: "Contact", active: false, selector: '#contact' },
 ]);
 
 const icons = ref<Icon[]>([
@@ -1433,7 +1440,7 @@ const projects = [
     technologies: ["Nuxt.Js", "Tailwind CSS", "Nuxt UI", "Vue Motion", "TypeScript", "Git","SEO"],
     image: "portfolio.png",
     liveUrl: "https://yourportfolio.com", // Update with your actual URL
-    codeUrl: "https://github.com/yourusername/portfolio" // Add your GitHub repo if public
+    codeUrl: "https://github.com/gyamficodes/gyamficodes-portfolio" // Add your GitHub repo if public
   },
   
   {
@@ -1486,6 +1493,13 @@ const socialLinks = [
   { name: 'linktree', icon: 'i-simple-icons-linktree', url: 'https://linktr.ee/Gyamficodes' },
   { name: 'Instagram', icon: 'i-simple-icons-instagram', url: 'https://www.instagram.com/gyamficodes_tech/#' }
 ]
+
+
+const handleScrollToView = (className: string) => {
+  const element = document.querySelector(className)
+  element?.scrollIntoView({ behavior: 'smooth' })
+}
+
 
 </script>
 
