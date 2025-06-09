@@ -101,7 +101,7 @@
           </div>
 
           <!-- menu icon -->
-          <div @click="handdleSideBar" class="cursor-pointer lg:hidden">
+          <div @click="handdleSideBar" class="cursor-pointer lg:hidden  relative">
             <transition name="fade-scale" mode="out-in">
               <UIcon
                 v-if="ShowSidebar"
@@ -116,6 +116,27 @@
                 key="close"
               />
             </transition>
+
+              <!-- sidebar -->
+<div class="relative  ">
+  <!-- mobile side bar start -->
+  <div class=" absolute right-0 top-0 ">
+    <div class=" flex flex-col overflow-hidden relative z-[999]">
+      <div
+        v-for="(link, index) in links"
+        :key="index"
+        @click="handleScrollToView(link.selector)"
+        :class="{ 'translate-x-72': ShowSidebar, '-translate-x-0': !ShowSidebar }"
+        class=" h-[55px] w-[250px] cursor-pointer sm:w-[300px] rounded-lg rounded-r-none px-3 flex items-center bg-[#01033a] font-[600] capitalize group text-white transition-all"
+        :style="`transition-duration: ${700 - index * 100}ms`"
+      >
+        <span class="transition-all duration-150 group-hover:translate-x-3">{{ link.text.toLowerCase() }}</span>
+      </div>
+    </div>
+  </div>
+  <!-- mobile side bar end -->
+</div>
+
           </div>
         </div>
       </div>
@@ -298,6 +319,7 @@
       </div>
     </div>
   </section>
+
 
   <!-- About Section -->
   <section
@@ -1198,6 +1220,10 @@
   </section>
 
 
+
+
+
+  
  <div class="h-[70px] border-t border-[#020040a6] bg-[#020040]">
       <p class="py-4 text-white font-medium text-base md:text-lg font-work text-center">
         Copyright © {{ new Date().getFullYear() }} – All Rights Reserved
