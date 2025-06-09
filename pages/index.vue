@@ -92,7 +92,7 @@
                   },
                 },
               }"
-              class="w-[23px] h-[23px] p-1 sm:w-[30px] sm:h-[30px] border-1 hover:bg-[#0ebeff] transition-all duration-300 hover:text-[#020040] rounded-md flex items-center justify-center border-[#0ebeff]"
+              class="w-[23px] h-[23px] p-1 sm:w-[30px] sm:h-[30px] border-1 border-[#0ebeff] hover:bg-[#0ebeff] transition-all duration-300 hover:text-[#020040] rounded-md flex items-center justify-center "
             >
               <UIcon :name="icon.name" class="size-4 sm:size-5" />
             </NuxtLink>
@@ -590,6 +590,7 @@
   </section>
 
   <section id="experience" class="relative h-auto py-[80px] bg-[#03032b] overflow-hidden">
+   
     <!-- Animated background elements -->
     <div class="absolute inset-0 overflow-hidden opacity-20">
       <div 
@@ -796,13 +797,413 @@
     </div>
   </section>
 
-  
+   <section id="projects" class="relative py-20 bg-gradient-to-b from-[#03032b] to-[#0a0a1a]">
+    <div class="w-[97%] lg:w-[95%]  xl:w-[90%] 2xl:w-[75%] mx-auto h-full px-3 lg:px-0">
+   <!-- Animated background elements -->
+    <div class="absolute inset-0 overflow-hidden opacity-15">
+      <div 
+        v-motion="{
+          initial: { x: -100, y: -100 },
+          visible: {
+            x: [0, -50, -30, -70, 0],
+            y: [0, -30, -50, -20, 0],
+            transition: {
+              duration: 15000,
+              repeat: Infinity,
+              ease: 'linear'
+            }
+          }
+        }"
+        class="absolute w-[300px] h-[300px] rounded-full bg-[#ffA801]/20 blur-[80px] -left-[150px] -top-[150px]"
+      />
+      <div 
+        v-motion="{
+          initial: { x: 100, y: 100 },
+          visible: {
+            x: [0, 50, 30, 70, 0],
+            y: [0, 30, 50, 20, 0],
+            transition: {
+              duration: 18000,
+              repeat: Infinity,
+              ease: 'linear',
+              delay: 2000
+            }
+          }
+        }"
+        class="absolute w-[400px] h-[400px] rounded-full bg-[#0ebeff]/20 blur-[100px] -right-[200px] -bottom-[200px]"
+      />
+    </div>
+
+    <div class="relative container mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <h2 
+          v-motion="{
+            initial: { y: 20, opacity: 0 },
+            visible: {
+              y: 0,
+              opacity: 1,
+              transition: {
+                type: 'spring',
+                stiffness: 100,
+                damping: 10
+              }
+            }
+          }"
+          class="text-[20px] md:text-[35px] font-[600] mb-4"
+        >
+          <span class="text-[#ffA801]"><</span> Featured Projects <span class="text-[#ffA801]">/></span>
+        </h2>
+        <p 
+          v-motion="{
+            initial: { y: 20, opacity: 0 },
+            visible: {
+              y: 0,
+              opacity: 1,
+              transition: {
+                delay: 100,
+                type: 'spring',
+                stiffness: 100,
+                damping: 10
+              }
+            }
+          }"
+          class="text-gray-400 max-w-2xl mx-auto text-lg"
+        >
+          A selection of my recent work showcasing full-stack development expertise
+        </p>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div 
+          v-for="(project, index) in projects"
+          :key="project.id"
+          v-motion="{
+            initial: { y: 50, opacity: 0, scale: 0.95 },
+            visible: {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              transition: {
+                delay: 100 + (index * 100),
+                type: 'spring',
+                stiffness: 100,
+                damping: 10
+              }
+            },
+            hovered: {
+              y: -10,
+              transition: { type: 'spring', stiffness: 400 }
+            }
+          }"
+          class="group relative overflow-hidden rounded-xl bg-gradient-to-br from-[#0a0a2a] to-[#0a0a2a]/50 backdrop-blur-sm border border-[#0ebeff]/20 hover:border-[#0ebeff]/60 transition-all duration-300 shadow-lg hover:shadow-[0_10px_30px_-10px_rgba(14,190,255,0.3)]"
+        >
+          <!-- Project Image -->
+          <div class="relative h-48 overflow-hidden">
+            <NuxtImg 
+              :src="getProjectImageUrl(project.image)"
+              :alt="project.title"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              width="600"
+              height="300"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-70" />
+            <div class="absolute bottom-0 left-0 p-4">
+              <h3 class="text-xl font-bold text-white">{{ project.title }}</h3>
+              <p class="text-[#0ebeff] text-sm">{{ project.category }}</p>
+            </div>
+          </div>
+
+          <!-- Project Content -->
+          <div class="p-6">
+            <p class="text-gray-300 mb-4">{{ project.description }}</p>
+            
+            <!-- Technologies -->
+            <div class="mb-4">
+              <h4 class="text-sm font-medium text-[#ffA801] mb-2">Technologies</h4>
+              <div class="flex flex-wrap gap-2">
+                <span 
+                  v-for="tech in project.technologies"
+                  :key="tech"
+                  class="px-2 py-1 text-xs font-medium rounded bg-[#0ebeff]/10 text-[#0ebeff] border border-[#0ebeff]/20"
+                >
+                  {{ tech }}
+                </span>
+              </div>
+            </div>
+
+            <!-- Project Links -->
+            <div class="flex gap-3">
+              <a 
+                v-if="project.liveUrl"
+                :href="project.liveUrl"
+                target="_blank"
+                class="flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-lg bg-[#0ebeff]/10 text-[#0ebeff] hover:bg-[#0ebeff]/20 transition-colors"
+              >
+                <UIcon name="i-heroicons-globe-alt" class="text-sm" />
+                Live Demo
+              </a>
+              <a 
+                v-if="project.codeUrl"
+                :href="project.codeUrl"
+                target="_blank"
+                class="flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors"
+              >
+                <UIcon name="i-heroicons-code-bracket" class="text-sm" />
+                View Code
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
+    </div>
+    </div>
+ 
+  </section>
+
+  <!-- fuvfact component  -->
+  <funfact/>
+  <!-- fuvfact component  -->
+
+
+  <section id="contact" class="relative py-20 bg-gradient-to-b from-[#03032b] to-[#0a0a1a] overflow-hidden">
+    <!-- Animated background elements -->
+    <div class="absolute inset-0 overflow-hidden opacity-20">
+      <div 
+        v-motion="{
+          initial: { x: -100, y: -100 },
+          visible: {
+            x: [0, -50, -30, -70, 0],
+            y: [0, -30, -50, -20, 0],
+            transition: {
+              duration: 15000,
+              repeat: Infinity,
+              ease: 'linear'
+            }
+          }
+        }"
+        class="absolute w-[300px] h-[300px] rounded-full bg-[#ffA801]/20 blur-[80px] -left-[150px] -top-[150px]"
+      ></div>
+      <div 
+        v-motion="{
+          initial: { x: 100, y: 100 },
+          visible: {
+            x: [0, 50, 30, 70, 0],
+            y: [0, 30, 50, 20, 0],
+            transition: {
+              duration: 18000,
+              repeat: Infinity,
+              ease: 'linear',
+              delay: 2000
+            }
+          }
+        }"
+        class="absolute w-[400px] h-[400px] rounded-full bg-[#0ebeff]/20 blur-[100px] -right-[200px] -bottom-[200px]"
+      ></div>
+    </div>
+
+    <div class="relative container mx-auto px-6 max-w-3xl text-center">
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <h2 
+          v-motion="{
+            initial: { y: 20, opacity: 0 },
+            visible: {
+              y: 0,
+              opacity: 1,
+              transition: {
+                type: 'spring',
+                stiffness: 100,
+                damping: 10
+              }
+            }
+          }"
+          class="text-3xl md:text-5xl font-bold mb-4"
+        >
+          <span class="text-[#ffA801]">👋</span> Say Hello!
+        </h2>
+        <p 
+          v-motion="{
+            initial: { y: 20, opacity: 0 },
+            visible: {
+              y: 0,
+              opacity: 1,
+              transition: {
+                delay: 100,
+                type: 'spring',
+                stiffness: 100,
+                damping: 10
+              }
+            }
+          }"
+          class="text-gray-400 max-w-2xl mx-auto text-lg"
+        >
+          Get in touch and discover how I can contribute to the growth of your business and team.
+        </p>
+      </div>
+
+      <!-- Primary CTA Button -->
+         <div
+         v-motion="{
+          initial: { scale: 0.9, opacity: 0 },
+          visible: {
+            scale: 1,
+            opacity: 1,
+            transition: {
+              delay: 200,
+              type: 'spring',
+              stiffness: 100,
+              damping: 10
+            }
+          },
+          hovered: {
+            scale: 1.05,
+            transition: { type: 'spring', stiffness: 400 }
+          }
+        }"
+              class="animating mb-5 w-[50px] h-[50px] mx-auto rounded-full flex items-center justify-center border border-white">
+             
+               <UIcon name="i-lucide-arrow-down" class="size-5" />
+            </div>
+      <div 
+        v-motion="{
+          initial: { scale: 0.9, opacity: 0 },
+          visible: {
+            scale: 1,
+            opacity: 1,
+            transition: {
+              delay: 200,
+              type: 'spring',
+              stiffness: 100,
+              damping: 10
+            }
+          },
+          hovered: {
+            scale: 1.05,
+            transition: { type: 'spring', stiffness: 400 }
+          }
+        }"
+        class="mb-16"
+      >
+        <a 
+          href="mailto:gyamfijohn08.com"
+          target="_blank"
+          class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-[#0ebeff] to-[#ffA801] text-white font-bold hover:shadow-lg hover:shadow-[#0ebeff]/40 transition-all text-lg"
+        >
+          <UIcon name="i-heroicons-envelope" class="text-xl" />
+          Send Me an Email
+        </a>
+      </div>
+
+      <!-- Contact Details -->
+      <div 
+        v-motion="{
+          initial: { y: 30, opacity: 0 },
+          visible: {
+            y: 0,
+            opacity: 1,
+            transition: {
+              delay: 300,
+              type: 'spring',
+              stiffness: 100,
+              damping: 10
+            }
+          }
+        }"
+        class="grid grid-cols-1 md:grid-cols-3 gap-6 bg-gradient-to-br from-[#0a0a2a] to-[#0a0a2a]/50 backdrop-blur-sm border border-[#0ebeff]/20 rounded-xl p-8 max-w-2xl mx-auto"
+      >
+        <!-- Phone -->
+        <div class="flex flex-col items-center gap-3 p-4">
+          <div class="p-3 rounded-full bg-[#0ebeff]/10 text-[#0ebeff]">
+            <UIcon name="i-heroicons-phone" class="text-xl" />
+          </div>
+          <h4 class="text-sm font-medium text-gray-400">Phone</h4>
+          <a href="tel:+2348123456789" class="text-white hover:text-[#0ebeff] transition-colors">+233 539214630</a>
+        </div>
+
+        <!-- Email -->
+        <div class="flex flex-col items-center gap-3 p-4">
+          <div class="p-3 rounded-full bg-[#0ebeff]/10 text-[#0ebeff]">
+            <UIcon name="i-heroicons-envelope" class="text-xl" />
+          </div>
+          <h4 class="text-sm font-medium text-gray-400">Email</h4>
+          <a href="mailto:hello@yourdomain.com" class="text-white hover:text-[#0ebeff] transition-colors">gyamfijohn08.com</a>
+        </div>
+
+        <!-- Location -->
+        <div class="flex flex-col items-center gap-3 p-4">
+          <div class="p-3 rounded-full bg-[#0ebeff]/10 text-[#0ebeff]">
+            <UIcon name="i-heroicons-map-pin" class="text-xl" />
+          </div>
+          <h4 class="text-sm font-medium text-gray-400">Location</h4>
+          <p class="text-white">Sunyani, Ghana</p>
+        </div>
+      </div>
+
+      <!-- Social Links -->
+      <div 
+        v-motion="{
+          initial: { y: 30, opacity: 0 },
+          visible: {
+            y: 0,
+            opacity: 1,
+            transition: {
+              delay: 400,
+              type: 'spring',
+              stiffness: 100,
+              damping: 10
+            }
+          }
+        }"
+        class="mt-12"
+      >
+        <h4 class="text-sm font-medium text-gray-400 mb-6">Connect With Me</h4>
+        <div class="flex justify-center gap-4">
+          <a 
+            v-for="(social, index) in socialLinks"
+            :key="index"
+            :href="social.url"
+            target="_blank"
+            class="w-[23px] h-[23px]  border-1 border-[#0ebeff] rounded-md p-1 bg-[#0ebeff]/10 text-[#0ebeff] hover:bg-[#0ebeff]/20 hover:text-white transition-all"
+            v-motion="{
+              initial: { scale: 0 },
+              visible: {
+                scale: 1,
+                transition: {
+                  delay: 500 + (index * 100),
+                  type: 'spring',
+                  stiffness: 500
+                }
+              },
+              hovered: {
+                scale: 1.1
+              }
+            }"
+          >
+            <UIcon :name="social.icon" class="text-xl" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+ <div class="h-[70px] border-t border-[#020040a6] bg-[#020040]">
+      <p class="py-4 text-white font-medium text-base md:text-lg font-work text-center">
+        Copyright © {{ new Date().getFullYear() }} – All Rights Reserved
+
+      </p>
+    </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import BannerImage from "~/assets/images/model-DcS2olqc.png";
-
+import funfact from "/components/funfact"
 interface Link {
   to: string;
   text: string;
@@ -990,6 +1391,102 @@ const experiences = [
   }
 ];
 
+const getProjectImageUrl = (imagePath) => {
+  return new URL(`/assets/images/project/${imagePath}`, import.meta.url).href
+}
+const projects = [
+  
+  {
+    id: 1,
+    title: "Clefmate Hotel SaaS",
+    category: "Full-stack Web Application",
+    description: "Hotel Management SaaS built with C#, .NET, MSSQL, Blazor scaled to 60+ clients, contributing 30% of company revenue with 98% retention.",
+    technologies: [ "C#","Blazor", ".NET", "MSSQL", "BootStrap", "Azure", "Agile", "Microservices", "JavaScript", ],
+    image: "friday.png",
+    liveUrl: "https://app.clefmate.com/account/login",
+    codeUrl: null
+  },
+   {
+    id: 2,
+    title: "RAMS Engineering Site",
+    category: "Corporate Website Redesign",
+    description: "Redesigned and rebuilt the corporate website with HTML5, CSS3, JavaScript and jQuery, ensuring full WCAG 2.1 AA compliance for accessibility. Implemented responsive layouts, optimized contact forms, and performance enhancements that increased leads by 15% while achieving 95+ Lighthouse scores for accessibility and performance.",
+    technologies: ["HTML5", "CSS3", "JavaScript", "jQuery", "WCAG 2.1", "Lighthouse", "SEO"],
+    image: "contact.png",
+    liveUrl: "https://www.reamc.com/",
+    codeUrl: null
+  },
+  {
+    id: 3,
+    title: "Ezi Food",
+    category: "Food Ordering Platform",
+    description: "Food ordering platform developed with Laravel, Vue.js, and PostgreSQL. Features real-time tracking and Stripe/PayStack integration, serving 50+ restaurants.",
+    technologies: ["Laravel", "Vue.js", "PostgreSQL", "Stripe", "PayStack", "Tailwind CSS", "TypeScript", "Jest", "Git","PHPUnit", "MySQL","Ag"],
+    image: "EziFood.png",
+    liveUrl: "https://www.ezifood.com/location",
+    codeUrl: null
+  },
+  {id: 4,
+    title: "Personal Portfolio",
+    category: "Portfolio",
+    description: "Modern developer portfolio built with Nuxt.js, Tailwind CSS, Nuxt UI and Vue Motion animations. Features smooth scroll-triggered animations and responsive design with 95+ Lighthouse scores.",
+    technologies: ["Nuxt.Js", "Tailwind CSS", "Nuxt UI", "Vue Motion", "TypeScript", "Git","SEO"],
+    image: "portfolio.png",
+    liveUrl: "https://yourportfolio.com", // Update with your actual URL
+    codeUrl: "https://github.com/yourusername/portfolio" // Add your GitHub repo if public
+  },
+  
+  {
+    id: 5,
+    title: "FennelSoft Website",
+    category: "Company Website",
+    description: "Built and managed company website with SEO architecture (90% page speed score) and implemented structured data markup increasing organic traffic by 30% YoY.",
+    technologies: ["C#","Umbraco", "Tailwind CSS", "JavaScript", "jQuery", "Framer Motion", "SEO"],
+    image: "fennelsoft.png",
+    liveUrl: "https://fennelsoft.com",
+    codeUrl: null
+  },
+  {
+    id: 6,
+    title: "NIM Avenue Booking System",
+    category: "Reservation System",
+    description: "Message-based reservation system handling 200+ monthly bookings with 99% uptime.",
+    technologies: ["C#","Umbraco", "Tailwind CSS", "JavaScript", "jQuery", "Framer Motion","SEO"],
+    image: "nimavenue.png",
+    liveUrl: "https://nimavenuehotel.com",
+    codeUrl: null
+  },
+  {
+    id: 7,
+    title: "Aberfo Business Platform",
+    category: "Corporate Website",
+    description: "Designed and built a performant, cross-browser-compatible corporate website using Umbraco CMS, Tailwind CSS, JavaScript, jQuery and Framer Motion that increased conversions by 27%, achieved 95+ Lighthouse scores, and delivered flawless IE11+ support through a custom JavaScript SDK.",
+    technologies: ["C#","Umbraco", "Tailwind CSS", "JavaScript", "jQuery", "Framer Motion", "SEO"],
+    image: "aberfo.png",
+    liveUrl: "https://aberfo.com",
+    codeUrl: null
+  },
+  {
+    id: 8,
+    title: "Ecormence Advance Filtering App",
+    category: "Ecormence",
+    description: "Experience seamless online shopping with my advanced e-commerce filter app, a side project built with React, Tailwind CSS, and JavaScript. It offers personalized product searches for a streamlined shopping experience.",
+    technologies: ["React","JavaScript", "Tailwind CSS", "Git", ],
+    image: "Ecormence.png",
+    liveUrl: "https://aberfo.com",
+    codeUrl: null
+  },
+ 
+]
+
+
+const socialLinks = [
+  { name: 'GitHub', icon: 'i-simple-icons-github', url: 'https://github.com/gyamficodes' },
+  { name: 'LinkedIn', icon: 'i-simple-icons-linkedin', url: 'https://www.linkedin.com/in/gyamfi-john-23aa5727b/' },
+  { name: 'linktree', icon: 'i-simple-icons-linktree', url: 'https://linktr.ee/Gyamficodes' },
+  { name: 'Instagram', icon: 'i-simple-icons-instagram', url: 'https://www.instagram.com/gyamficodes_tech/#' }
+]
+
 </script>
 
 
@@ -1023,4 +1520,23 @@ ul::-webkit-scrollbar-thumb {
   background-color: #0ebeff;
   border-radius: 10px;
 }
+
+.animating {
+  animation: move 1s linear infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translateY(-10px);
+  }
+
+  50% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
 </style>
