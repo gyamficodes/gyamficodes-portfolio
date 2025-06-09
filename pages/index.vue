@@ -31,7 +31,7 @@
       class="fixed w-full h-[90px] z-50"
       :class="isScrolled ? 'bg-[#020040] shadow-lg' : 'bg-transparent'"
     >
-      <div class="w-[97%] lg:w-[95%]  xl:w-[90%] 2xl:w-[75%] mx-auto h-full px-3 lg:px-0">
+      <div class="w-[97%] lg:w-[95%]  xl:w-[90%] 2xl:w-[75%] mx-auto h-full px-3 lg:px-0 shadow-xl">
         <div class="flex items-center justify-between h-full">
           <NuxtLink to="/">
             <h1
@@ -1165,7 +1165,7 @@
             <UIcon name="i-heroicons-envelope" class="text-xl" />
           </div>
           <h4 class="text-sm font-medium text-gray-400">Email</h4>
-          <a href="mailto:hello@yourdomain.com" class="text-white hover:text-[#0ebeff] transition-colors">gyamfijohn08.com</a>
+          <a href="mailto:hello@yourdomain.com" class="text-white hover:text-[#0ebeff] transition-colors">gyamfijohn08@gmail.com</a>
         </div>
 
         <!-- Location -->
