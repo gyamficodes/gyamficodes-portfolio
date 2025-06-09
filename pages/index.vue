@@ -1117,14 +1117,20 @@
         }"
         class="mb-16"
       >
-        <a 
-          href="mailto:gyamfijohn08.com"
-          target="_blank"
-          class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-[#0ebeff] to-[#ffA801] text-white font-bold hover:shadow-lg hover:shadow-[#0ebeff]/40 transition-all text-lg"
-        >
-          <UIcon name="i-heroicons-envelope" class="text-xl" />
-          Send Me an Email
-        </a>
+       <a
+    href="mailto:gyamfijohn08.com"
+    target="_blank"
+    class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#fea701] text-white font-bold hover:bg-[#0d9ed8] transition-all duration-300 text-lg border border-[#0ebeff]/30 hover:border-[#0ebeff]/60 hover:shadow-[0_0_20px_rgba(14,190,255,0.3)]"
+    v-motion="{
+      initial: { opacity: 0, y: 10 },
+      enter: { opacity: 1, y: 0, transition: { delay: 200 } },
+      hovered: { scale: 1.02 },
+      tapped: { scale: 0.98 }
+    }"
+  >
+    <UIcon name="i-heroicons-envelope" class="text-xl" />
+    Send Me an Email
+  </a>
       </div>
 
       <!-- Contact Details -->

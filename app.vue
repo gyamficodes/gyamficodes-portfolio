@@ -10,7 +10,7 @@
       hovered: { scale: 1.05 },
       tapped: { scale: 0.95 }
     }"
-    class="fixed bottom-8 right-8 z-50 p-3 rounded-lg shadow-lg bg-gradient-to-br from-[#0ebeff] to-[#ffA801] text-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(14,190,255,0.5)]"
+    class="fixed bottom-8 right-8 z-50 p-3 rounded-lg shadow-xl bg-[#020040]  text-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(14,190,255,0.5)]"
     aria-label="Scroll to top"
   >
     <UIcon 
