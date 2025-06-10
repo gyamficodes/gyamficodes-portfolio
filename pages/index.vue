@@ -112,17 +112,22 @@
                   opacity: 1,
                   transition: {
                     type: 'spring',
-                    stiffness: 400, // Snappier spring
-                    damping: 25, // Quick settling
-                    mass: 0.4, // Lighter feel
-                    delay: 150 + index * 50, // Reduced base delay + stagger
-                    duration: 300, // Explicit duration
+                    stiffness: 400,
+                    damping: 25,
+                    mass: 0.4,
+                    delay: 150 + index * 50,
+                    duration: 300,
                   },
                 },
               }"
               class="w-[23px] h-[23px] p-1 sm:w-[30px] sm:h-[30px] border-1 border-[#0ebeff] hover:bg-[#0ebeff] transition-all duration-300 hover:text-[#020040] rounded-md flex items-center justify-center"
+              :aria-label="icon.label || icon.name"
             >
-              <UIcon :name="icon.name" class="size-4 sm:size-5" />
+              <UIcon
+                :name="icon.name"
+                class="size-4 sm:size-5"
+                aria-hidden="true"
+              />
             </NuxtLink>
           </div>
 
@@ -147,7 +152,7 @@
             </transition>
 
             <!-- sidebar -->
-            <div class="relative">
+            <div class="relative lg:hidden">
               <!-- mobile side bar start -->
               <div class="absolute right-0 top-0">
                 <div class="flex flex-col overflow-hidden relative z-[999]">
@@ -474,33 +479,33 @@
             <!-- Skills & Tools Section -->
             <div
               v-motion="{
-                    initial: { scale: 0.8, opacity: 0 },
-                    enter: {
-                      scale: 1,
-                      opacity: 1,
-                      transition: {
-                        delay: 100 + index * 50,
-                        type: 'spring',
-                        stiffness: 150,
-                        damping: 10,
-                      },
-                    },
-                    visible: {
-                      scale: 1,
-                      opacity: 1,
-                      transition: {
-                        delay: 50 + index * 50,
-                        type: 'spring',
-                        stiffness: 150,
-                        damping: 10,
-                      },
-                    },
-                    hovered: {
-                      scale: 1.05,
-                      transition: { type: 'spring', stiffness: 400 },
-                    },
-                    inViewOnce: false,
-                  }"
+                initial: { scale: 0.8, opacity: 0 },
+                enter: {
+                  scale: 1,
+                  opacity: 1,
+                  transition: {
+                    delay: 100 + index * 50,
+                    type: 'spring',
+                    stiffness: 150,
+                    damping: 10,
+                  },
+                },
+                visible: {
+                  scale: 1,
+                  opacity: 1,
+                  transition: {
+                    delay: 50 + index * 50,
+                    type: 'spring',
+                    stiffness: 150,
+                    damping: 10,
+                  },
+                },
+                hovered: {
+                  scale: 1.05,
+                  transition: { type: 'spring', stiffness: 400 },
+                },
+                inViewOnce: false,
+              }"
             >
               <h1 class="text-white text-[20px] lg:text-[25px] mt-4 font-[600]">
                 Skills & Tools
@@ -1287,37 +1292,33 @@
         class="mt-12"
       >
         <h4 class="text-sm font-medium text-gray-400 mb-6">Connect With Me</h4>
-      <div class="flex justify-center gap-4">
-  <a
-    v-for="(social, index) in socialLinks"
-    :key="index"
-    :href="social.url"
-    target="_blank"
-    rel="noopener noreferrer"
-    :aria-label="`Follow me on ${social.name}`" 
-    class="w-[23px] h-[23px] border-1 border-[#0ebeff] rounded-md p-1 bg-[#0ebeff]/10 text-[#0ebeff] hover:bg-[#0ebeff]/20 hover:text-white transition-all"
-    v-motion="{
-      initial: { scale: 0 },
-      visible: {
-        scale: 1,
-        transition: {
-          delay: 500 + index * 100,
-          type: 'spring',
-          stiffness: 500,
-        },
-      },
-      hovered: {
-        scale: 1.1,
-      },
-    }"
-  >
-    <UIcon 
-      :name="social.icon" 
-      class="text-xl"
-      :aria-hidden="true" 
-    />
-  </a>
-</div>
+        <div class="flex justify-center gap-4">
+          <a
+            v-for="(social, index) in socialLinks"
+            :key="index"
+            :href="social.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            :aria-label="`Follow me on ${social.name}`"
+            class="w-[23px] h-[23px] border-1 border-[#0ebeff] rounded-md p-1 bg-[#0ebeff]/10 text-[#0ebeff] hover:bg-[#0ebeff]/20 hover:text-white transition-all"
+            v-motion="{
+              initial: { scale: 0 },
+              visible: {
+                scale: 1,
+                transition: {
+                  delay: 500 + index * 100,
+                  type: 'spring',
+                  stiffness: 500,
+                },
+              },
+              hovered: {
+                scale: 1.1,
+              },
+            }"
+          >
+            <UIcon :name="social.icon" class="text-xl" :aria-hidden="true" />
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -1326,8 +1327,8 @@
     <p
       class="py-4 text-white font-medium text-base md:text-lg font-work text-center"
     >
-   Copyright © {{ new Date().getFullYear() }} – GyamfiCodes. All Rights Reserved
-
+      Copyright © {{ new Date().getFullYear() }} – GyamfiCodes. All Rights
+      Reserved
     </p>
   </div>
 </template>

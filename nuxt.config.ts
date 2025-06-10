@@ -13,6 +13,9 @@ export default defineNuxtConfig({
   ],
  app: {
     head: {
+      htmlAttrs: {
+        lang: 'en' // or your preferred language code
+      },
       title: 'Gyamficodes | Fullstack Developer Portfolio',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
