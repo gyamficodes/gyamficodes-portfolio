@@ -9,7 +9,8 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
     '@nuxt/image',
     '@nuxt/icon',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@nuxt/image'
   ],
  app: {
     head: {
@@ -42,4 +43,18 @@ export default defineNuxtConfig({
     }
   },
  
+
+   image: {
+    dir: '/assets/images', // Where your images are stored
+    presets: {
+      banner: {
+        modifiers: {
+          format: 'webp',
+          quality: 80,
+          width: 1200,
+          height: 450
+        }
+      }
+    }
+  }
 })
