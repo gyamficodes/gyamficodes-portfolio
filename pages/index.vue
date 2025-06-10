@@ -473,27 +473,33 @@
             <!-- Skills & Tools Section -->
             <div
               v-motion="{
-                initial: { y: 20, opacity: 0 },
-                enter: {
-                  y: 0,
-                  opacity: 1,
-                  transition: {
-                    delay: 150,
-                    type: 'spring',
-                    stiffness: 200,
-                  },
-                },
-                visible: {
-                  y: 0,
-                  opacity: 1,
-                  transition: {
-                    delay: 1500,
-                    type: 'spring',
-                    stiffness: 200,
-                  },
-                },
-                inViewOnce: false,
-              }"
+                    initial: { scale: 0.8, opacity: 0 },
+                    enter: {
+                      scale: 1,
+                      opacity: 1,
+                      transition: {
+                        delay: 100 + index * 50,
+                        type: 'spring',
+                        stiffness: 150,
+                        damping: 10,
+                      },
+                    },
+                    visible: {
+                      scale: 1,
+                      opacity: 1,
+                      transition: {
+                        delay: 50 + index * 50,
+                        type: 'spring',
+                        stiffness: 150,
+                        damping: 10,
+                      },
+                    },
+                    hovered: {
+                      scale: 1.05,
+                      transition: { type: 'spring', stiffness: 400 },
+                    },
+                    inViewOnce: false,
+                  }"
             >
               <h1 class="text-white text-[20px] lg:text-[25px] mt-4 font-[600]">
                 Skills & Tools
@@ -701,7 +707,7 @@
               opacity: 1,
               transition: {
                 type: 'spring',
-                stiffness: 100,
+                stiffness: 200,
                 damping: 10,
               },
             },
@@ -805,7 +811,7 @@
                     visible: {
                       scale: 1,
                       transition: {
-                        delay: 300 + index * 150,
+                        delay: 100 + index * 50,
                         type: 'spring',
                         stiffness: 500,
                       },
@@ -867,7 +873,7 @@
                       visible: {
                         scale: 1,
                         transition: {
-                          delay: 400 + index * 150 + techIndex * 50,
+                          delay: 200 + index * 50 + techIndex * 30,
                           type: 'spring',
                           stiffness: 500,
                         },
@@ -983,9 +989,9 @@
                 opacity: 1,
                 scale: 1,
                 transition: {
-                  delay: 100 + index * 100,
+                  delay: 100 + index * 30,
                   type: 'spring',
-                  stiffness: 100,
+                  stiffness: 200,
                   damping: 10,
                 },
               },
@@ -1217,9 +1223,9 @@
             y: 0,
             opacity: 1,
             transition: {
-              delay: 300,
+              delay: 200,
               type: 'spring',
-              stiffness: 100,
+              stiffness: 200,
               damping: 10,
             },
           },
@@ -1270,9 +1276,9 @@
             y: 0,
             opacity: 1,
             transition: {
-              delay: 400,
+              delay: 300,
               type: 'spring',
-              stiffness: 100,
+              stiffness: 200,
               damping: 10,
             },
           },

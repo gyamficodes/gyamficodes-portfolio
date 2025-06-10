@@ -217,9 +217,9 @@
               y: 0,
               opacity: 1,
               transition: {
-                delay: 600,
+                delay: 200,
                 type: 'spring',
-                stiffness: 100,
+                stiffness: 200,
                 damping: 10
               }
             },
