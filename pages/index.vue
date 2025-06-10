@@ -1319,7 +1319,8 @@
     <p
       class="py-4 text-white font-medium text-base md:text-lg font-work text-center"
     >
-      Copyright © {{ new Date().getFullYear() }} – All Rights Reserved
+   Copyright © {{ new Date().getFullYear() }} – GyamfiCodes. All Rights Reserved
+
     </p>
   </div>
 </template>
@@ -1625,7 +1626,7 @@ const projects = [
       "Git",
       "PHPUnit",
       "MySQL",
-      "Ag",
+      "Agile",
     ],
     image: "EziFood.png",
     liveUrl: "https://www.ezifood.com/location",
