@@ -88,7 +88,7 @@
                 },
               }"
               class="capitalize text-white text-[15px] font-[600] hover:text-[#0ebeff] transition-all duration-300 ease"
-              :class="link.active ? 'text-[#0ebeff]' : ''"
+              :class="link.active ? 'text-[#0ebeff]' : '#fff'"
               @click="handleScrollToView(link.selector)"
             >
               {{ link.text }}
@@ -184,7 +184,7 @@
         class="flex items-center justify-between h-full !flex-wrap lg:!flex-nowrap"
       >
         <div class="w-full h-full flex flex-col justify-center gap-5">
-          <h3
+          <h1
             v-motion="{
               initial: { y: 50, opacity: 0 },
               enter: {
@@ -211,8 +211,8 @@
           >
             <span class="text-[#ffA801]"><</span> hello world!
             <span class="text-[#ffA801]">/></span>
-          </h3>
-          <h1
+          </h1>
+          <h2
             v-motion="{
               initial: { y: 50, opacity: 0 },
               enter: {
@@ -239,7 +239,7 @@
             class="text-white text-[40px] lg:text-[60px] font-[700] leading-[50px]"
           >
             I'm <span class="text-[#0ebeff]">Gyamfi John</span>
-          </h1>
+          </h2>
 
           <p
             v-motion="{
@@ -346,6 +346,7 @@
               :src="BannerImage"
               class="w-full md:h-[450px] object-cover justify-center shadow-xl"
               style="transform: scale(1.083"
+              alt="Gyamfi John - Fullstack Developer"
             />
           </div>
         </div>
@@ -1286,31 +1287,37 @@
         class="mt-12"
       >
         <h4 class="text-sm font-medium text-gray-400 mb-6">Connect With Me</h4>
-        <div class="flex justify-center gap-4">
-          <a
-            v-for="(social, index) in socialLinks"
-            :key="index"
-            :href="social.url"
-            target="_blank"
-            class="w-[23px] h-[23px] border-1 border-[#0ebeff] rounded-md p-1 bg-[#0ebeff]/10 text-[#0ebeff] hover:bg-[#0ebeff]/20 hover:text-white transition-all"
-            v-motion="{
-              initial: { scale: 0 },
-              visible: {
-                scale: 1,
-                transition: {
-                  delay: 500 + index * 100,
-                  type: 'spring',
-                  stiffness: 500,
-                },
-              },
-              hovered: {
-                scale: 1.1,
-              },
-            }"
-          >
-            <UIcon :name="social.icon" class="text-xl" />
-          </a>
-        </div>
+      <div class="flex justify-center gap-4">
+  <a
+    v-for="(social, index) in socialLinks"
+    :key="index"
+    :href="social.url"
+    target="_blank"
+    rel="noopener noreferrer"
+    :aria-label="`Follow me on ${social.name}`" 
+    class="w-[23px] h-[23px] border-1 border-[#0ebeff] rounded-md p-1 bg-[#0ebeff]/10 text-[#0ebeff] hover:bg-[#0ebeff]/20 hover:text-white transition-all"
+    v-motion="{
+      initial: { scale: 0 },
+      visible: {
+        scale: 1,
+        transition: {
+          delay: 500 + index * 100,
+          type: 'spring',
+          stiffness: 500,
+        },
+      },
+      hovered: {
+        scale: 1.1,
+      },
+    }"
+  >
+    <UIcon 
+      :name="social.icon" 
+      class="text-xl"
+      :aria-hidden="true" 
+    />
+  </a>
+</div>
       </div>
     </div>
   </section>
