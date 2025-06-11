@@ -7,8 +7,9 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import BannerImage from "~/assets/images/model-DcS2olqc.png";
+import BannerImage from "~/assets/images/John-removebg-preview.png";
 import funfact from "/components/funfact";
+// Importing composables for data
 import { useProject } from "/composables/useProjects.ts";
 import {useLinks} from "/composables/useLinks.ts";
 import {useIcons} from "/composables/useIcons.ts";
@@ -16,6 +17,7 @@ import {useSkills} from "/composables/useSkills.ts";
 import { useTech} from "/composables/useTech.ts";
 import { useExperience } from "/composables/useExperience.ts";
 
+//  composables  data
 const { projects } = useProject();
 const { links } = useLinks();
 const { icons } = useIcons();
@@ -86,11 +88,23 @@ const handleScrollToView = (className: string) => {
   const element = document.querySelector(className);
   element?.scrollIntoView({ behavior: "smooth" });
 };
+
+
+function getProjectImageUrls(image: string) {
+  return `/assets/images/project${image}` 
+}
+
+
+
 </script>
 
 
 
 <template>
+
+ 
+
+
   <section
     id="home"
     class="bg-[url('/assets/images/photo_2020-07-24_20-37-32.jpg')] relative bg-center bg-cover bg-no-repeat h-auto lg:h-screen"
@@ -437,7 +451,7 @@ const handleScrollToView = (className: string) => {
           <div class="shake">
             <img
               :src="BannerImage"
-              class="w-full md:h-[450px] object-cover justify-center shadow-xl"
+              class="w-full h-full object-cover justify-center shadow-xl"
               style="transform: scale(1.083"
               alt="Gyamfi John - Fullstack Developer"
             />
@@ -1418,7 +1432,11 @@ const handleScrollToView = (className: string) => {
       Copyright © {{ new Date().getFullYear() }} – GyamfiCodes. All Rights
       Reserved
     </p>
+   
   </div>
+
+
+
 </template>
 
 
