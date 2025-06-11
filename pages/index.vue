@@ -448,14 +448,16 @@ function getProjectImageUrls(image: string) {
           }"
           class="relative"
         >
-          <div class="shake">
-            <img
-              :src="BannerImage"
-              class="w-full h-full object-cover justify-center shadow-xl"
-              style="transform: scale(1.083"
-              alt="Gyamfi John - Fullstack Developer"
-            />
-          </div>
+        <div class="md:shake relative w-full max-w-md mx-auto overflow-hidden rounded-3xl shadow-2xl group transition duration-500 ease-in-out hover:shadow-3xl">
+  <img
+    :src="BannerImage"
+    class="w-full h-auto object-cover transform scale-105 group-hover:scale-110 transition duration-700 ease-in-out"
+    alt="Gyamfi John - Fullstack Developer"
+  />
+  <!-- Optional gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+</div>
+
         </div>
       </div>
     </div>
