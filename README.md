@@ -15,7 +15,7 @@ Welcome to my personal portfolio website — a sleek, fast, and responsive site 
 - **Tailwind CSS** — Utility-first CSS framework
 - **VueUse + Motion** — Smooth scroll-based and hover animations
 - **Iconify** — Icon system with Lucide icons
-
+- **TypeScritp** — TypeScript support
 ---
 
 ## ✨ Features
