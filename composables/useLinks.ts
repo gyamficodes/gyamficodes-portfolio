@@ -4,7 +4,8 @@ export const useLinks = () => {
   to: string;
   text: string;
   active: boolean;
-  selector?: string;
+  selector: string | undefined;
+  label?: string;
 }
 
 const links = ref<Link[]>([

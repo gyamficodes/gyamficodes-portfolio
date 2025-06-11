@@ -8,14 +8,14 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import BannerImage from "~/assets/images/John-removebg-preview.png";
-import funfact from "/components/funfact";
+import funfact from "@/components/funfact.vue";
 // Importing composables for data
-import { useProject } from "/composables/useProjects.ts";
-import {useLinks} from "/composables/useLinks.ts";
-import {useIcons} from "/composables/useIcons.ts";
-import {useSkills} from "/composables/useSkills.ts";
-import { useTech} from "/composables/useTech.ts";
-import { useExperience } from "/composables/useExperience.ts";
+import { useProject } from "@/composables/useProjects";
+import { useLinks } from "@/composables/useLinks";
+import {useIcons} from "@/composables/useIcons";
+import {useSkills} from "@/composables/useSkills";
+import { useTech} from "@/composables/useTech";
+import { useExperience } from "@/composables/useExperience";
 
 //  composables  data
 const { projects } = useProject();
@@ -56,7 +56,7 @@ const getImagePath = (imageName: string) => {
 
 
 
-const getProjectImageUrl = (imagePath) => {
+const getProjectImageUrl = (imagePath: string) => {
   return new URL(`/assets/images/project/${imagePath}`, import.meta.url).href;
 };
 
@@ -261,7 +261,7 @@ function getProjectImageUrls(image: string) {
                   <div
                     v-for="(link, index) in links"
                     :key="index"
-                    @click="handleScrollToView(link.selector)"
+                    @click="handleScrollToView(link.selector || '' )"
                     :class="{
                       'translate-x-72': ShowSidebar,
                       '-translate-x-0': !ShowSidebar,
