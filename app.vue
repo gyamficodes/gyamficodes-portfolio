@@ -21,11 +21,15 @@
         <UIcon name="i-heroicons-arrow-up" class="h-6 w-6" />
       </button>
     </section>
+    <SpeedInsights />
   </NuxtLayout>
 </template>
 
 <script setup lang="ts">
 const isVisible = ref(false);
+import { SpeedInsights } from "@vercel/speed-insights/nuxt"
+
+onMounted(() =>  SpeedInsights);
 
 const handleScroll = () => {
   isVisible.value = window.scrollY > 300;
