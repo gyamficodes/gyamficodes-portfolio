@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import BannerImage from "~/assets/images/John-removebg-preview.png";
+import BannerImage from "/John-removebg-preview.png";
 import funfact from "@/components/funfact.vue";
 // Importing composables for data
 import { useProject } from "@/composables/useProjects";
@@ -432,14 +432,15 @@ function getProjectImageUrls(image: string) {
           <div
             class="md:shake relative w-full max-w-md mx-auto overflow-hidden rounded-3xl shadow-2xl group transition duration-500 ease-in-out hover:shadow-3xl"
           >
-            <img
+            <NuxtImg
               :src="BannerImage"
-              class="w-full h-auto object-cover transform scale-105 group-hover:scale-110 transition duration-700 ease-in-out"
               alt="Gyamfi John - Fullstack Developer"
+              class="w-full h-auto object-cover transform scale-105 group-hover:scale-110 transition duration-700 ease-in-out"
               loading="lazy"
               width="500"
               height="500"
             />
+
             <!-- Optional gradient overlay -->
             <div
               class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"
