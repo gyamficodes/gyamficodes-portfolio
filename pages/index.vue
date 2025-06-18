@@ -1,9 +1,7 @@
-
 <!-- eslint-disable vue/first-attribute-linebreak -->
 <!-- eslint-disable vue/no-parsing-error -->
 <!-- eslint-disable vue/attributes-order -->
 <!-- eslint-disable vue/no-multiple-template-root -->
-
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
@@ -12,9 +10,9 @@ import funfact from "@/components/funfact.vue";
 // Importing composables for data
 import { useProject } from "@/composables/useProjects";
 import { useLinks } from "@/composables/useLinks";
-import {useIcons} from "@/composables/useIcons";
-import {useSkills} from "@/composables/useSkills";
-import { useTech} from "@/composables/useTech";
+import { useIcons } from "@/composables/useIcons";
+import { useSkills } from "@/composables/useSkills";
+import { useTech } from "@/composables/useTech";
 import { useExperience } from "@/composables/useExperience";
 
 //  composables  data
@@ -25,7 +23,6 @@ const { skills } = useSkills();
 const { techStack } = useTech();
 const { experiences } = useExperience();
 
-
 const isScrolled = ref(false);
 
 const ShowSidebar = ref<boolean>(true);
@@ -33,7 +30,6 @@ const ShowSidebar = ref<boolean>(true);
 const handdleSideBar = () => {
   ShowSidebar.value = !ShowSidebar.value;
 };
-
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50;
@@ -47,19 +43,14 @@ onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
 });
 
-
-
 // Helper function to ensure correct image paths
 const getImagePath = (imageName: string) => {
   return new URL(`/assets/images/skills/${imageName}`, import.meta.url).href;
 };
 
-
-
 const getProjectImageUrl = (imagePath: string) => {
   return new URL(`/assets/images/project/${imagePath}`, import.meta.url).href;
 };
-
 
 const socialLinks = [
   {
@@ -89,22 +80,12 @@ const handleScrollToView = (className: string) => {
   element?.scrollIntoView({ behavior: "smooth" });
 };
 
-
 function getProjectImageUrls(image: string) {
-  return `/assets/images/project${image}` 
+  return `/assets/images/project${image}`;
 }
-
-
-
 </script>
 
-
-
 <template>
-
- 
-
-
   <section
     id="home"
     class="bg-[url('/assets/images/photo_2020-07-24_20-37-32.jpg')] relative bg-center bg-cover bg-no-repeat h-auto lg:h-screen"
@@ -223,7 +204,7 @@ function getProjectImageUrls(image: string) {
                 },
               }"
               class="w-[23px] h-[23px] p-1 sm:w-[30px] sm:h-[30px] border-1 border-[#0ebeff] hover:bg-[#0ebeff] transition-all duration-300 hover:text-[#020040] rounded-md flex items-center justify-center"
-              :aria-label="icon.label || icon.name"
+              :aria-label="icon.name"
             >
               <UIcon
                 :name="icon.name"
@@ -261,7 +242,7 @@ function getProjectImageUrls(image: string) {
                   <div
                     v-for="(link, index) in links"
                     :key="index"
-                    @click="handleScrollToView(link.selector || '' )"
+                    @click="handleScrollToView(link.selector || '')"
                     :class="{
                       'translate-x-72': ShowSidebar,
                       '-translate-x-0': !ShowSidebar,
@@ -448,16 +429,22 @@ function getProjectImageUrls(image: string) {
           }"
           class="relative"
         >
-        <div class="md:shake relative w-full max-w-md mx-auto overflow-hidden rounded-3xl shadow-2xl group transition duration-500 ease-in-out hover:shadow-3xl">
-  <img
-    :src="BannerImage"
-    class="w-full h-auto object-cover transform scale-105 group-hover:scale-110 transition duration-700 ease-in-out"
-    alt="Gyamfi John - Fullstack Developer"
-  />
-  <!-- Optional gradient overlay -->
-  <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
-</div>
-
+          <div
+            class="md:shake relative w-full max-w-md mx-auto overflow-hidden rounded-3xl shadow-2xl group transition duration-500 ease-in-out hover:shadow-3xl"
+          >
+            <img
+              :src="BannerImage"
+              class="w-full h-auto object-cover transform scale-105 group-hover:scale-110 transition duration-700 ease-in-out"
+              alt="Gyamfi John - Fullstack Developer"
+              loading="lazy"
+              width="500"
+              height="500"
+            />
+            <!-- Optional gradient overlay -->
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"
+            ></div>
+          </div>
         </div>
       </div>
     </div>
@@ -1434,14 +1421,8 @@ function getProjectImageUrls(image: string) {
       Copyright © {{ new Date().getFullYear() }} – GyamfiCodes. All Rights
       Reserved
     </p>
-   
   </div>
-
-
-
 </template>
-
-
 
 <style scoped>
 /* Custom animations */

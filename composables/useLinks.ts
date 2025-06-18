@@ -4,7 +4,7 @@ export const useLinks = () => {
   to: string;
   text: string;
   active: boolean;
-  selector: string | undefined;
+  selector: string ;
   label?: string;
 }
 

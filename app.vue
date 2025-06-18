@@ -1,28 +1,4 @@
-<script setup lang="ts">
-const isVisible = ref(false);
-import { SpeedInsights } from "@vercel/speed-insights/nuxt"
 
-onMounted(() =>  SpeedInsights);
-
-const handleScroll = () => {
-  isVisible.value = window.scrollY > 300;
-};
-
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
-
-onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
-});
-
-onBeforeUnmount(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
-</script>
 
 
 <template>
@@ -52,6 +28,31 @@ onBeforeUnmount(() => {
   </NuxtLayout>
 </template>
 
+<script setup lang="ts">
+const isVisible = ref(false);
+import { SpeedInsights } from "@vercel/speed-insights/nuxt"
+
+// onMounted(() =>  SpeedInsights);
+
+const handleScroll = () => {
+  isVisible.value = window.scrollY > 300;
+};
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
+</script>
 
 <style scoped>
 /* Optional: Add a subtle pulse animation */
