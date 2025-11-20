@@ -121,7 +121,7 @@ const projects: Project[] = [
   },
   {
     id: 6,
-    title: "NIM Avenue Booking System",
+    title: "New Joko Hotel",
     category: "Reservation System",
     description:
       "Message-based reservation system handling 200+ monthly bookings with 99% uptime.",
@@ -134,8 +134,8 @@ const projects: Project[] = [
       "Framer Motion",
       "SEO",
     ],
-    image: "nimavenue.png",
-    liveUrl: "https://nimavenuehotel.com",
+    image: "Newjokohotel.png",
+    liveUrl: "https://newjokohotel.com/",
     codeUrl: null,
   },
   {
